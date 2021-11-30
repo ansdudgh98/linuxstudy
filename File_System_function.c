@@ -151,16 +151,34 @@ void read_history_num(int num){
 
 }
 
-const char* exc_history_num(int num){
+char* exc_history_num(int num){
 	char *filename = "history_log.txt";
 	FILE *file = fopen(filename,"r");
 	char *command = malloc(sizeof(char)*100);
 	int i,j=0;
-	printf("num:%d\n",num);
 	char str[255];
 	while((fgets(str,100,file)!=NULL)){
-		printf("%s\n",str);
+		i++;
 	}
+	if(i<num){
+		printf("plz input !num small than history num");
+	}
+	int fseeknum = fseek(file,0,SEEK_SET);
+        if(fseeknum==-1)
+                fprintf(stderr,"파일 위치 오류");
+	while(1){
+		fgets(str,100,file);
+		if(j==(num-1)){
+			strcpy(command,str);
+			break;
+		}
+		if(j==i){
+			break;
+		}		
+		j++;	
+	}
+
+	strtok(command,"\n");
 	return command;
 }	
 

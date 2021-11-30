@@ -48,16 +48,17 @@ void main_print(){
 		}
 	}
 	if(*(userinput+0) == '!'){
-		char *cc = malloc(sizeof(char)*255);;
+		char *cc = malloc(sizeof(char)*255);
 		char *str = strtok_r(userinput,"!",&cc);
 		int ch_num = atoi(str);
-		printf("ch_num:%d\n",ch_num);
 		if(ch_num==0){
-			printf("plz input no str\n");
+			printf("plz input 0 or not str\n");
 			main_print();
 		}
-		printf("%d",ch_num);
-		strcpy(userinput,exc_history_num(ch_num));
+		char *cp_result= malloc(sizeof(char)*255);
+		strcpy(cp_result,exc_history_num(ch_num));
+		strcpy(userinput,cp_result);
+		strcpy(saveuserinput,cp_result);
 	}
 	if(strcmp(userinput,"cat")==0){
 		printf("error\n");

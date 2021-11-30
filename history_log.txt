@@ -1,9 +1,0 @@
-rm history_log.txt
-cat qweq
-cat hihiln
-history
-history
-history
-history
-cat history
-cat history_log.txt
